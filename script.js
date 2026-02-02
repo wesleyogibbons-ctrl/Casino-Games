@@ -1,5 +1,5 @@
 // --- INITIAL SETUP ---
-let balance = parseFloat(localStorage.getItem("casinoBalance")) || 10000;
+let balance = parseFloat(localStorage.getItem("casinoBalance")) || 20000;
 let lastVisit = localStorage.getItem("lastVisitDate");
 let today = new Date().toDateString();
 
