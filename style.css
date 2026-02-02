@@ -1,0 +1,75 @@
+body {
+    background-color: #051a05;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background: #000;
+    padding: 20px;
+    border-bottom: 3px solid #d4af37;
+}
+
+.gold-text { color: #d4af37; text-transform: uppercase; }
+
+.main-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.game-box {
+    background: #111;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    width: 450px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.betting-grid, .bet-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input, select {
+    background: #222;
+    border: 1px solid #d4af37;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.casino-btn {
+    background: linear-gradient(#d4af37, #b8860b);
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.casino-btn:disabled { background: #444; cursor: not-allowed; }
+
+.hand-display {
+    background: #0a2e0a;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    min-height: 40px;
+    font-size: 1.1rem;
+}
+
+.output-display {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px dashed #d4af37;
+    background: #000;
+}
