@@ -43,13 +43,24 @@ document.getElementById("spinButton").addEventListener("click", () => {
     }
     if (document.getElementById("colorInput").value === color) win += cBet * 2;
 
-    balance += win;
+    // ... inside the roulette spinButton listener ...
+balance += win;
+let netChange = win - totalBet; // This shows if they actually made profit
+let historyResult = `${color} ${result === 37 ? '00' : result}`;
+
+addHistory("Roulette", historyResult, netChange);
+saveState();
     document.getElementById("rouletteOutput").innerHTML = `Landed: <b>${color} ${result === 37 ? '00' : result}</b><br>Won: $${win}`;
     saveState();
 });
 
 // --- BLACKJACK LOGIC ---
 let deck = [], pHand = [], dHand = [], currentBjBet = 0;
+let netChange = payout - bjBet;
+let historyResult = `P:${getScore(pHand)} vs D:${getScore(dHand)}`;
+
+addHistory("Blackjack", historyResult, netChange);
+saveState();
 
 function createDeck() {
     const suits = ["♠", "♥", "♦", "♣"];
@@ -119,4 +130,23 @@ function endBj() {
     document.getElementById("hitBtn").disabled = true;
     document.getElementById("stayBtn").disabled = true;
     saveState();
+}
+function addHistory(game, result, amount) {
+    const log = document.getElementById("history-log");
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    
+    // Determine color based on win/loss
+    const color = amount > 0 ? "#00ff00" : (amount < 0 ? "#ff4d4d" : "#ffffff");
+    const sign = amount > 0 ? "+" : "";
+
+    // Create the new log entry
+    const entry = `<p>[${time}] <b>${game}:</b> ${result} | <span style="color: ${color}">${sign}$${amount}</span></p>`;
+    
+    // Add to the top of the log
+    log.innerHTML = entry + log.innerHTML;
+
+    // Optional: Limit to last 10 entries
+    if (log.children.length > 10) {
+        log.removeChild(log.lastChild);
+    }
 }
